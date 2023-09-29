@@ -49,6 +49,7 @@ print(testset_labels_tens.shape)
 
 n_train = train_ds.shape[0]
 n_test  = test_ds.shape[0]
+n_valid = val_ds.shape[0]
 sY = train_ds[1]
 sX = train_ds.shape[2]
 n_class = 10
@@ -267,8 +268,9 @@ for epoch in range(num_epochs):
     
 
 
-    with torch.no_grad():        
-        for batch in range(50):
+    with torch.no_grad():  
+        correct = 0      
+        for batch in range((n_valid/batch_size)):
             
             #print('epoch', epoch, 'batch', batch)
             
@@ -294,7 +296,14 @@ for epoch in range(num_epochs):
             # keep track of the loss
             v_loss_np = loss.detach().cpu().numpy()
             v_epoch_loss = epoch_loss + v_loss_np
-        
+            
+            epoch_loss = epoch_loss / n_valid
+            loss_valid_list.append(epoch_loss)
+            acc_valid = (100* correct / n_valid)
+            print(correct, "correct")
+            print(num_batches, "num_batches")
+            print('epoch %d loss %f' % (epoch, epoch_loss))
+            print('accuracy for v epoch %d : %f' % (epoch, acc_valid) )
        
 
     #Validation
