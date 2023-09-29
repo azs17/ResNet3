@@ -18,8 +18,8 @@ print(4)
 #---
 # Load the dataset
 #---
-dataset = torchvision.datasets.CIFAR10(root='/content/', download=True, train = True, transform=None)
-testset = torchvision.datasets.CIFAR10(root='/content/', train=False, transform=None)
+dataset = torchvision.datasets.CIFAR10(root='./content/', download=True, train = True, transform=None)
+testset = torchvision.datasets.CIFAR10(root='./content/', train=False, transform=None)
 
 
 dataset_tens = torch.tensor(dataset.data, requires_grad=False, device=my_device, dtype=torch.float32)
@@ -259,7 +259,9 @@ for epoch in range(num_epochs):
         
     epoch_loss = epoch_loss / n_train
     loss_train_list.append(epoch_loss)
-    acc_train = (100* correct / num_batches)
+    acc_train = (100* correct / n_train)
+    print(correct, "correct")
+    print(num_batches, "num_batches")
     print('epoch %d loss %f' % (epoch, epoch_loss))
     print('accuracy for epoch %d : %f' % (epoch, acc_train) )
     
@@ -291,7 +293,7 @@ for epoch in range(num_epochs):
         
             # keep track of the loss
             v_loss_np = loss.detach().cpu().numpy()
-            v_epoch_loss = v_epoch_loss + v_loss_np
+            v_epoch_loss = epoch_loss + v_loss_np
         
        
 
