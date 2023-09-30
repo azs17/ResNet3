@@ -50,6 +50,9 @@ train_ds = train_ds.permute(0,3,1,2)
 val_ds = val_ds.permute(0,3,1,2)
 test_ds = test_ds.permute(0,3,1,2)
 
+test_ds_np      = test_ds.data.numpy()
+label_test_np  = test_ds.targets.numpy()
+
 print(train_ds.shape)
 print(train_ds_labels.shape)
 print(val_ds.shape)
@@ -380,9 +383,9 @@ with torch.no_grad():
     print('y_test length', len(y_test))
     print('predicted_val length', len(predicted_val))
     matplotlib.use('Agg')
-
+    pred_np = predicted_val_list.detach().cpu().numpy()
     for i in range(50):
-        print(Y[i], predicted_val_list[i], acc_test_list[0])
+        print(label_test_np[i], pred_np[i], acc_test_list[0])
         # print('image no',i)
         # print('a',acc_test_list[0])
         # print('p',predicted_val[0])
@@ -390,7 +393,7 @@ with torch.no_grad():
         img = test_ds[i,:,:]
         print('i', i, 'img', img.shape)
         plt.figure(figno)
-        plt.title("label %d pred %d  accur %.2f" % (Y[i], predicted_val_list[i], acc_test_list[0]))
+        plt.title("label %d pred %d  accur %.2f" % (label_test_np[i], pred_np[i], acc_test_list[0]))
         plt.imshow(X=img, cmap='gray', vmin=0, vmax=255)
         #plt.show()
         plt.savefig('%s/test/%05d.png' % (odir, i))
