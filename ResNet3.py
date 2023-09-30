@@ -3,7 +3,9 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
+import matplotlib
 import matplotlib.pyplot as plt
+import os
 
 if torch.backends.mps.is_available():
     print('use mps')
@@ -15,7 +17,14 @@ else:
     print('use cpu')
     my_device = torch.device("cpu")
 
-print(4)
+def mkdir(mydir):
+	try:
+		os.mkdir(mydir)
+	except:
+		print('failed to make directory', mydir)
+
+odir = 'content'
+mkdir(odir)
 #---
 # Load the dataset
 #---
@@ -318,7 +327,7 @@ for epoch in range(num_epochs):
 
 with torch.no_grad():  
     correct = 0
-    print("#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#TRAINING#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#")
+    print("#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#TESTING#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#")
     r = int(n_test/batch_size)
     for batch in range(r):
         
@@ -361,9 +370,20 @@ with torch.no_grad():
     print('TRAIN ACCURACY LIST', len(loss_train_list))
     print('VALID ACCURACY LIST', len(loss_valid_list))
     print('TEST ACCURACY LIST', len(loss_test_list))
+    figno = 1
+    for i in range(50):
+
+        img = test_ds[i,:,:]
+        print('i', i, 'img', img.shape)
+        plt.figure(figno)
+        plt.title("label %d pred %d  accur %.2f" % (y_test[i], predicted_val[i], acc_test_list[0]))
+        plt.imshow(X=img, cmap='gray', vmin=0, vmax=255)
+        #plt.show()
+        plt.savefig('%s/test/%05d.png' % (odir, i))
+        figno+=1
 
     yplot = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
-    plt.use('Agg')
+    matplotlib.use('Agg')
     plt.title("ResNet3 Model")
     plt.xlabel("epoch")
     plt.ylabel("loss")
@@ -371,7 +391,7 @@ with torch.no_grad():
     plt.plot(loss_valid_list, yplot, color ="blue")
     plt.axhline(y = loss_test_list[0], color = 'green')
     fig = plt.figure()
-    fig.savefig('/output/')
+    fig.savefig(odir)
 
     plt.show()
     #Validation
