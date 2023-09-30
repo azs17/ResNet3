@@ -226,6 +226,8 @@ acc_valid_list = []
 loss_test_list = []
 acc_test_list = []
 
+predicted_val_list = []
+
 
 # Train the model
 for epoch in range(num_epochs):
@@ -314,6 +316,7 @@ for epoch in range(num_epochs):
             
             _, predicted_val = torch.max(Yhat.data, 1)
             _, Y = torch.max(Y,1)
+            predicted_val_list.append(predicted_val)
             correct += (predicted_val == Y).sum().item()
 
         v_epoch_loss = v_epoch_loss / n_valid
