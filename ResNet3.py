@@ -393,7 +393,7 @@ with torch.no_grad():
         img = test_ds[i,:,:]
         print('i', i, 'img', img.shape)
         plt.figure(figno)
-        plt.title("label %d pred %d  accur %.2f" % (label_test_np[i], pred_np[i], acc_test_list[0]))
+        plt.title("test %d label %d pred %d accur %.2f" % (i, label_test_np[i], predicted_val_list[i], acc_test_list[0]))
         plt.imshow(X=img, cmap='gray', vmin=0, vmax=255)
         #plt.show()
         plt.savefig('%s/test/%05d.png' % (odir, i))
