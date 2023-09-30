@@ -383,9 +383,9 @@ with torch.no_grad():
     print('y_test length', len(y_test))
     print('predicted_val length', len(predicted_val))
     matplotlib.use('Agg')
-    pred_np = predicted_val_list.cpu().numpy()
+    pred_np = predicted_val_list
     for i in range(50):
-        print(label_test_np[i], pred_np[i], acc_test_list[0])
+    
         # print('image no',i)
         # print('a',acc_test_list[0])
         # print('p',predicted_val[0])
