@@ -397,11 +397,16 @@ with torch.no_grad():
         # print('y',y_test[0])
         img = test_ds[i,:,:]
         print('i', i, 'img', img.shape)
+        "test1"
         plt.figure(figno)
+        "test2"
         plt.title("test %d label %d pred %d accur %.2f" % (i, lab, pred, acc))
+        "test3"
         plt.imshow(X=img, cmap='gray', vmin=0, vmax=255)
+        "test4"
         #plt.show()
         plt.savefig('%s/test/%05d.png' % (odir, i))
+        "test5"
         figno+=1
 
     yplot = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
