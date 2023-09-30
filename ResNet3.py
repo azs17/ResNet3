@@ -23,7 +23,7 @@ def mkdir(mydir):
 	except:
 		print('failed to make directory', mydir)
 
-odir = 'content'
+odir = 'output'
 mkdir(odir)
 #---
 # Load the dataset
