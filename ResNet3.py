@@ -313,48 +313,48 @@ for epoch in range(num_epochs):
        
 #TEST LOOP ------------------------------------------------------------
 
-with torch.no_grad():  
-    correct = 0
-    print("#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#TRAINING#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#")
-    r = int(n_test/batch_size)
-    for batch in range(r):
-        
-        #print('epoch', epoch, 'batch', batch)
-        
-        # reset the optimizer for gradient descent
-        
-        # start / end indices of the data
-        sidx =  batch    * batch_size
-        eidx = (batch+1) * batch_size
-        
-        # grab the data and labels for the batch
-        X = val_ds[sidx:eidx]
-        Y = y_val[sidx:eidx]
-        
-        # run 
-        #print("BATCH SHAPE", X.shape)
-        Yhat = model(X)
-        #print("Y Shape" ,Y.shape)
-        #print("Yhat Shape", Yhat.shape)
-        loss = F.cross_entropy(Yhat,Y)
-
-        # gradient descent
+    with torch.no_grad():  
+        correct = 0
+        print("#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#TRAINING#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#")
+        r = int(n_test/batch_size)
+        for batch in range(r):
             
-        # keep track of the loss
-        t_loss_np = loss.detach().cpu().numpy()
-        t_epoch_loss = epoch_loss + t_loss_np
-        
-        _, predicted_val = torch.max(Yhat.data, 1)
-        _, Y = torch.max(Y,1)
-        correct += (predicted_val == Y).sum().item()
+            #print('epoch', epoch, 'batch', batch)
+            
+            # reset the optimizer for gradient descent
+            
+            # start / end indices of the data
+            sidx =  batch    * batch_size
+            eidx = (batch+1) * batch_size
+            
+            # grab the data and labels for the batch
+            X = val_ds[sidx:eidx]
+            Y = y_val[sidx:eidx]
+            
+            # run 
+            #print("BATCH SHAPE", X.shape)
+            Yhat = model(X)
+            #print("Y Shape" ,Y.shape)
+            #print("Yhat Shape", Yhat.shape)
+            loss = F.cross_entropy(Yhat,Y)
 
-    t_epoch_loss = t_epoch_loss / n_test
-    loss_valid_list.append(t_epoch_loss)
-    acc_test = (100* correct / n_test)
-    print(correct, "correct")
-    print(num_batches, "num_batches")
-    print('epoch %d loss %f' % (epoch+1, t_epoch_loss))
-    print('accuracy for v epoch %d : %f' % (epoch+1, acc_test) )
+            # gradient descent
+                
+            # keep track of the loss
+            t_loss_np = loss.detach().cpu().numpy()
+            t_epoch_loss = epoch_loss + t_loss_np
+            
+            _, predicted_val = torch.max(Yhat.data, 1)
+            _, Y = torch.max(Y,1)
+            correct += (predicted_val == Y).sum().item()
+
+        t_epoch_loss = t_epoch_loss / n_test
+        loss_valid_list.append(t_epoch_loss)
+        acc_test = (100* correct / n_test)
+        print(correct, "correct")
+        print(num_batches, "num_batches")
+        print('epoch %d loss %f' % (epoch+1, t_epoch_loss))
+        print('accuracy for v epoch %d : %f' % (epoch+1, acc_test) )
     
     #Validation
     
