@@ -405,8 +405,9 @@ with torch.no_grad():
         plt.imshow(X=img, cmap='gray', vmin=0, vmax=255)
         "test4"
         #plt.show()
-        plt.savefig(odir + '%05d.png' % (int(i)))
+        plt.savefig("/" + odir + '/%05d.png' % (int(i)))
         "test5"
+        plt.close()
         figno+=1
 
     yplot = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
