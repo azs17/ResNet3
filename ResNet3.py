@@ -372,7 +372,7 @@ with torch.no_grad():
     print('TEST ACCURACY LIST', len(loss_test_list))
     figno = 1
     print('y_test length', len(y_test))
-    print('predicted_val length' len(predicted_val))
+    print('predicted_val length', len(predicted_val))
 
     for i in range(50):
 
