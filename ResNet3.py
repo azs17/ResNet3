@@ -360,6 +360,19 @@ with torch.no_grad():
     print('TRAIN ACCURACY LIST', len(loss_train_list))
     print('VALID ACCURACY LIST', len(loss_valid_list))
     print('TEST ACCURACY LIST', len(loss_test_list))
+
+    yplot = np.arange(1, 20)
+
+    plt.title("ResNet3 Model")
+    plt.xlabel("epoch")
+    plt.ylabel("loss")
+    plt.plot(loss_train_list, yplot, color ="red")
+    plt.plot(loss_valid_list, yplot, color ="blue")
+    plt.axhline(y = loss_test_list[0], color = 'green')
+    fig = plt.figure()
+    fig.savefig('./content/')
+
+    plt.show()
     #Validation
     
         # correct = 0
