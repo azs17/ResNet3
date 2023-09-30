@@ -14,6 +14,7 @@ elif torch.cuda.is_available():
 else:
     print('use cpu')
     my_device = torch.device("cpu")
+
 print(4)
 #---
 # Load the dataset
@@ -362,7 +363,7 @@ with torch.no_grad():
     print('TEST ACCURACY LIST', len(loss_test_list))
 
     yplot = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
-
+    plt.use('Agg')
     plt.title("ResNet3 Model")
     plt.xlabel("epoch")
     plt.ylabel("loss")
@@ -370,7 +371,7 @@ with torch.no_grad():
     plt.plot(loss_valid_list, yplot, color ="blue")
     plt.axhline(y = loss_test_list[0], color = 'green')
     fig = plt.figure()
-    fig.savefig('./content/')
+    fig.savefig('/output/')
 
     plt.show()
     #Validation
