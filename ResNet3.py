@@ -378,7 +378,7 @@ with torch.no_grad():
     print('predicted_val length', len(predicted_val))
 
     for i in range(50):
-        print(y_test[i], predicted_val[i], acc_test_list[0])
+        print(max(y_test[i]), predicted_val[i,0], acc_test_list[0])
         # print('image no',i)
         # print('a',acc_test_list[0])
         # print('p',predicted_val[0])
