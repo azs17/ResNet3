@@ -51,7 +51,7 @@ val_ds = val_ds.permute(0,3,1,2)
 test_ds = test_ds.permute(0,3,1,2)
 
 test_ds_np      = test_ds.data
-label_test_np  = test_ds.targets
+label_test_np  = test_ds
 
 print(train_ds.shape)
 print(train_ds_labels.shape)
