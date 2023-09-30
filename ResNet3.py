@@ -378,7 +378,7 @@ with torch.no_grad():
     print('predicted_val length', len(predicted_val))
 
     for i in range(50):
-        print(max(y_test[i]), predicted_val[i,0], acc_test_list[0])
+        print(max(Y[i]), predicted_val[i,0], acc_test_list[0])
         # print('image no',i)
         # print('a',acc_test_list[0])
         # print('p',predicted_val[0])
@@ -386,7 +386,7 @@ with torch.no_grad():
         img = test_ds[i,:,:]
         print('i', i, 'img', img.shape)
         plt.figure(figno)
-        plt.title("label %d pred %d  accur %.2f" % (y_test[i], predicted_val[i], acc_test_list[0]))
+        plt.title("label %d pred %d  accur %.2f" % (Y[i], predicted_val[i], acc_test_list[0]))
         plt.imshow(X=img, cmap='gray', vmin=0, vmax=255)
         #plt.show()
         plt.savefig('%s/test/%05d.png' % (odir, i))
