@@ -319,7 +319,6 @@ for epoch in range(num_epochs):
             
             _, predicted_val = torch.max(Yhat.data, 1)
             _, Y = torch.max(Y,1)
-            predicted_val_list.append(predicted_val)
             correct += (predicted_val == Y).sum().item()
 
         v_epoch_loss = v_epoch_loss / n_valid
@@ -366,6 +365,7 @@ with torch.no_grad():
         
         _, predicted_val = torch.max(Yhat.data, 1)
         _, Y = torch.max(Y,1)
+        predicted_val_list.append(predicted_val)
         correct += (predicted_val == Y).sum().item()
 
     t_epoch_loss = t_epoch_loss / n_test
@@ -383,7 +383,7 @@ with torch.no_grad():
     print('y_test length', len(y_test))
     print('predicted_val length', len(predicted_val))
     matplotlib.use('Agg')
-    pred_np = predicted_val_list.detach().cpu().numpy()
+    pred_np = predicted_val_list.cpu().numpy()
     for i in range(50):
         print(label_test_np[i], pred_np[i], acc_test_list[0])
         # print('image no',i)
