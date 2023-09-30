@@ -270,8 +270,9 @@ for epoch in range(num_epochs):
     print('training cycle --------------------')
 
     with torch.no_grad():  
-        correct = 0      
-        for batch in range((n_valid/batch_size)):
+        correct = 0
+        r = int(n_valid/batch_size)
+        for batch in range(r):
             
             #print('epoch', epoch, 'batch', batch)
             
@@ -293,11 +294,15 @@ for epoch in range(num_epochs):
             loss = F.cross_entropy(Yhat,Y)
 
             # gradient descent
-        
+             
             # keep track of the loss
             v_loss_np = loss.detach().cpu().numpy()
             v_epoch_loss = epoch_loss + v_loss_np
             
+            _, predicted_val = torch.max(Yhat.data, 1)
+            _, Y = torch.max(Y,1)
+            correct += (predicted_val == Y).sum().item()
+
         v_epoch_loss = v_epoch_loss / n_valid
         loss_valid_list.append(v_epoch_loss)
         acc_valid = (100* correct / n_valid)
