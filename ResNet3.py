@@ -68,6 +68,9 @@ sX = train_ds.shape[2]
 n_class = 10
 chan  = 1
 
+classes = ('plane', 'car', 'bird', 'cat',
+           'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
+
 #-------------------
 # Residual Block
 #-------------------
@@ -385,8 +388,8 @@ with torch.no_grad():
     matplotlib.use('Agg')
     pred_np = predicted_testlabel_list
     for i in range(50):
-        pred = int(predicted_testlabel_list[0][i].item())
-        lab = int(label_test_np[i])
+        pred = classes[int(predicted_testlabel_list[0][i].item())]
+        lab = classes[int(label_test_np[i])]
         acc = acc_test_list[0]
         print('label ',lab) 
         print('predicted ',pred)
