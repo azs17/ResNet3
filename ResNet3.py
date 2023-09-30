@@ -361,7 +361,7 @@ with torch.no_grad():
     print('VALID ACCURACY LIST', len(loss_valid_list))
     print('TEST ACCURACY LIST', len(loss_test_list))
 
-    yplot = np.arange(1, 20)
+    yplot = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
 
     plt.title("ResNet3 Model")
     plt.xlabel("epoch")
