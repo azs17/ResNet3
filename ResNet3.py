@@ -229,7 +229,7 @@ acc_valid_list = []
 loss_test_list = []
 acc_test_list = []
 
-predicted_val_list = []
+predicted_testlabel_list = []
 
 
 # Train the model
@@ -365,7 +365,7 @@ with torch.no_grad():
         
         _, predicted_val = torch.max(Yhat.data, 1)
         _, Y = torch.max(Y,1)
-        predicted_val_list.append(predicted_val)
+        predicted_testlabel_list.append(predicted_val)
         correct += (predicted_val == Y).sum().item()
 
     t_epoch_loss = t_epoch_loss / n_test
@@ -383,10 +383,10 @@ with torch.no_grad():
     print('y_test length', len(y_test))
     print('predicted_val length', len(predicted_val))
     matplotlib.use('Agg')
-    pred_np = predicted_val_list
+    pred_np = predicted_testlabel_list
     for i in range(50):
         print('label ',label_test_np[i]) 
-        print('predicted ',predicted_val_list[i])
+        print('predicted ',predicted_testlabel_list[0][i])
         print('accuracy', acc_test_list[0])
         # print('image no',i)
         # print('a',acc_test_list[0])
@@ -395,7 +395,7 @@ with torch.no_grad():
         img = test_ds[i,:,:]
         print('i', i, 'img', img.shape)
         plt.figure(figno)
-        plt.title("test %d label %d pred %d accur %.2f" % (i, label_test_np[i], predicted_val_list[0][i], acc_test_list[0]))
+        plt.title("test %d label %d pred %d accur %.2f" % (i, label_test_np[i], predicted_testlabel_list[0][i], acc_test_list[0]))
         plt.imshow(X=img, cmap='gray', vmin=0, vmax=255)
         #plt.show()
         plt.savefig('%s/test/%05d.png' % (odir, i))
