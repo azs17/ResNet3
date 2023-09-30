@@ -31,7 +31,7 @@ mkdir(odir)
 dataset = torchvision.datasets.CIFAR10(root='./content/', download=True, train = True, transform=None)
 testset = torchvision.datasets.CIFAR10(root='./content/', train=False, transform=None)
 label_test_np  = np.array(testset.targets)
-
+x_test_np  = np.array(testset.data)
 dataset_tens = torch.tensor(dataset.data, requires_grad=False, device=my_device, dtype=torch.float32)
 dataset_labels_tens = torch.tensor(dataset.targets, requires_grad=False, device=my_device, dtype=torch.float32)
 testset_tens = torch.tensor(testset.data, requires_grad=False, device=my_device, dtype=torch.float32)
@@ -395,7 +395,7 @@ with torch.no_grad():
         # print('a',acc_test_list[0])
         # print('p',predicted_val[0])
         # print('y',y_test[0])
-        img = test_ds[i,:,:]
+        img = x_test_np[i,:,:]
         print('i', i, 'img', img.shape)
         "test1"
         plt.figure(figno)
