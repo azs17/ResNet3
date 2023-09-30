@@ -385,7 +385,9 @@ with torch.no_grad():
     matplotlib.use('Agg')
     pred_np = predicted_val_list
     for i in range(50):
-    
+        print('label ',label_test_np[i]) 
+        print('predicted ',predicted_val_list[i])
+        print('accuracy', acc_test_list[0])
         # print('image no',i)
         # print('a',acc_test_list[0])
         # print('p',predicted_val[0])
