@@ -273,6 +273,7 @@ for epoch in range(num_epochs):
     epoch_loss = epoch_loss / n_train
     loss_train_list.append(epoch_loss)
     acc_train = (100* correct / n_train)
+    acc_train_list.append(acc_train)
     print(correct, "correct")
     print(num_batches, "num_batches")
     print('epoch %d loss %f' % (epoch+1, epoch_loss))
@@ -318,6 +319,7 @@ for epoch in range(num_epochs):
         v_epoch_loss = v_epoch_loss / n_valid
         loss_valid_list.append(v_epoch_loss)
         acc_valid = (100* correct / n_valid)
+        acc_valid_list.append(acc_valid)
         print(correct, "correct")
         print(num_batches, "num_batches")
         print('epoch %d loss %f' % (epoch+1, v_epoch_loss))
@@ -363,6 +365,7 @@ with torch.no_grad():
     t_epoch_loss = t_epoch_loss / n_test
     loss_test_list.append(t_epoch_loss)
     acc_test = (100* correct / n_test)
+    acc_test_list.append(acc_test)
     print(correct, "correct")
     print(num_batches, "num_batches")
     print('epoch %d loss %f' % (epoch+1, t_epoch_loss))
@@ -376,7 +379,7 @@ with torch.no_grad():
 
     for i in range(50):
         print('image no',i)
-        print('a',acc_test_list[1])
+        print('a',acc_test_list[])
         print('p',predicted_val[0])
         print('y',y_test[0])
         img = test_ds[i,:,:]
