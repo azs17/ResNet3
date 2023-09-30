@@ -405,7 +405,7 @@ with torch.no_grad():
         plt.imshow(X=img, cmap='gray', vmin=0, vmax=255)
         "test4"
         #plt.show()
-        plt.savefig('%s/%05d.png' % (odir, i))
+        plt.savefig('%s/%d.png' % (odir, i))
         "test5"
         plt.close()
         figno+=1
@@ -419,7 +419,7 @@ with torch.no_grad():
     plt.plot(loss_valid_list, yplot, color ="blue")
     plt.axhline(y = loss_test_list[0], color = 'green')
     fig = plt.figure()
-    fig.savefig(odir)
+    fig.savefig('%s/%s.png' % (odir, "loss"))
 
     plt.show()
     #Validation
