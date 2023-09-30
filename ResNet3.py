@@ -316,7 +316,7 @@ for epoch in range(num_epochs):
 with torch.no_grad():  
     correct = 0
     print("#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#TRAINING#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#")
-    r = int(n_valid/batch_size)
+    r = int(n_test/batch_size)
     for batch in range(r):
         
         #print('epoch', epoch, 'batch', batch)
