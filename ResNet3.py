@@ -380,9 +380,9 @@ with torch.no_grad():
     print('y_test length', len(y_test))
     print('predicted_val length', len(predicted_val))
 
-    acc_test_list_np = acc_test_list.numpy()
-    predicted_val_list_np = predicted_val_list.numpy()
-    Y_np = Y.numpy()
+    acc_test_list_np = acc_test_list.numpy.array()
+    predicted_val_list_np = predicted_val_list.numpy.array()
+    Y_np = Y.numpy.array()
     for i in range(50):
         print(Y_np[i], predicted_val_list_np[i], acc_test_list[0])
         # print('image no',i)
