@@ -375,7 +375,7 @@ with torch.no_grad():
     print('predicted_val length', len(predicted_val))
 
     for i in range(50):
-
+        print('image no',i)
         img = test_ds[i,:,:]
         print('i', i, 'img', img.shape)
         plt.figure(figno)
