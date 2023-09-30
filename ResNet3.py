@@ -421,8 +421,7 @@ with torch.no_grad():
     plt.plot(loss_train_list, yplot, color ="red")
     plt.plot(loss_valid_list, yplot, color ="blue")
     plt.axhline(y = loss_test_list[0], color = 'green')
-    fig = plt.figure()
-    fig.savefig('%s/%s.png' % (odir, "loss"))
+    plt.savefig('%s/%s.png' % (odir, "loss"))
 
     plt.show()
     #Validation
