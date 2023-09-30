@@ -403,7 +403,7 @@ with torch.no_grad():
         "test1"
         plt.figure(figno)
         "test2"
-        plt.title("test %d label %d pred %d accur %.2f" % (i, lab, pred, acc))
+        plt.title("test %d label %s pred %s accur %.2f" % (i, lab, pred, acc))
         "test3"
         plt.imshow(X=img, cmap='gray', vmin=0, vmax=255)
         "test4"
