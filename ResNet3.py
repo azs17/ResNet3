@@ -379,7 +379,7 @@ with torch.no_grad():
     figno = 1
     print('y_test length', len(y_test))
     print('predicted_val length', len(predicted_val))
-
+    matplotlib.use('Agg')
 
     for i in range(50):
         print(Y[i], predicted_val_list[i], acc_test_list[0])
@@ -397,7 +397,7 @@ with torch.no_grad():
         figno+=1
 
     yplot = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
-    matplotlib.use('Agg')
+    
     plt.title("ResNet3 Model")
     plt.xlabel("epoch")
     plt.ylabel("loss")
