@@ -376,7 +376,7 @@ with torch.no_grad():
 
     for i in range(50):
         print('image no',i)
-        print('a',acc_test_list[0])
+        print('a',acc_test_list[1])
         print('p',predicted_val[0])
         print('y',y_test[0])
         img = test_ds[i,:,:]
