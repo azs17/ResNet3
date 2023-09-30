@@ -356,7 +356,7 @@ with torch.no_grad():
     print(correct, "correct")
     print(num_batches, "num_batches")
     print('epoch %d loss %f' % (epoch+1, t_epoch_loss))
-    print('accuracy for v epoch %d : %f' % (epoch+1, acc_test) )
+    print('accuracy for train epoch %d : %f' % (epoch+1, acc_test) )
     
     #Validation
     
