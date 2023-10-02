@@ -438,7 +438,7 @@ with torch.no_grad():
     plt.title("ResNet3 Model")
     plt.xlabel("epoch")
     plt.ylabel("loss")
-    plt.axis(0,20,0.015,0.021)
+    plt.axis([0,20,0.015,0.021])
     xx = yplot
     yy = loss_train_list
     yyy = loss_valid_list
