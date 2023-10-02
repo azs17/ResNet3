@@ -431,7 +431,7 @@ with torch.no_grad():
     #plt.axhline(y = acc_test_list[0], color = 'green')
     plt.savefig('%s/%s.png' % (odir, "acc"))
 
-
+    plt.clf()
     plt.close()
 
 
