@@ -23,7 +23,7 @@ def mkdir(mydir):
 	except:
 		print('failed to make directory', mydir)
 
-odir = 'output'
+odir = 'outdir'
 mkdir(odir)
 #---
 # Load the dataset
@@ -318,7 +318,7 @@ for epoch in range(num_epochs):
              
             # keep track of the loss
             v_loss_np = loss.detach().cpu().numpy()
-            v_epoch_loss = epoch_loss + v_loss_np
+            v_epoch_loss = v_epoch_loss + v_loss_np
             
             _, predicted_val = torch.max(Yhat.data, 1)
             _, Y = torch.max(Y,1)
@@ -364,7 +364,7 @@ with torch.no_grad():
             
         # keep track of the loss
         t_loss_np = loss.detach().cpu().numpy()
-        t_epoch_loss = epoch_loss + t_loss_np
+        t_epoch_loss = t_epoch_loss + t_loss_np
         
         _, predicted_val = torch.max(Yhat.data, 1)
         _, Y = torch.max(Y,1)
@@ -408,7 +408,7 @@ with torch.no_grad():
         plt.imshow(X=img, cmap='gray', vmin=0, vmax=255)
         "test4"
         #plt.show()
-        plt.savefig('%s/%s%05d.png' % (odir,"test", i))
+        plt.savefig('%s/%s%05d.png' % (odir,"test_", i))
         "test5"
         plt.close()
         figno+=1
@@ -430,7 +430,7 @@ with torch.no_grad():
     plt.gca().legend(loc = "upper right")
     #plt.plot(loss_valid_list, yplot, color ="blue")
     #plt.axhline(y = acc_test_list[0], color = 'green')
-    plt.savefig('%s/%s.png' % (odir, "acc"))
+    plt.savefig('%s/%s.png' % (odir, "accuracy"))
 
     plt.clf()
     plt.close()
