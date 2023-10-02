@@ -427,7 +427,7 @@ with torch.no_grad():
     plt.plot(xx,yy, color = "blue", label = "train")
     plt.plot(xx, yyy, color = "orange", label = "vaid")
     plt.plot(xx, yyyy, color = "purple", label = "test")
-    plt.legend(loc = "upper right")
+    plt.gca().legend(loc = "upper right")
     #plt.plot(loss_valid_list, yplot, color ="blue")
     #plt.axhline(y = acc_test_list[0], color = 'green')
     plt.savefig('%s/%s.png' % (odir, "acc"))
@@ -453,7 +453,7 @@ with torch.no_grad():
     #plt.plot(xx, yyyy, color = "purple", label = "test")
     #plt.plot(loss_valid_list, yplot, color ="blue")
     plt.axhline(y = loss_test_list[0], color = 'green')
-    plt.legend()
+    plt.gca().legend()
     plt.savefig('%s/%s.png' % (odir, "loss"))
     
 
