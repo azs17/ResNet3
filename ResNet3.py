@@ -338,7 +338,6 @@ for epoch in range(num_epochs):
 
 with torch.no_grad():  
     correct = 0
-    t_epoch_loss = 0
     print("#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#TESTING#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#")
     r = int(n_test/batch_size)
     for batch in range(r):
@@ -366,7 +365,7 @@ with torch.no_grad():
             
         # keep track of the loss
         t_loss_np = loss.detach().cpu().numpy()
-        t_epoch_loss = t_epoch_loss + t_loss_np
+        t_epoch_loss = epoch_loss + t_loss_np
         
         _, predicted_val = torch.max(Yhat.data, 1)
         _, Y = torch.max(Y,1)
