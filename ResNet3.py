@@ -203,8 +203,8 @@ class ResNet(nn.Module):
         P = self.lin2(P)
        # print("P SHAPE", P.shape)
 
-        
-        z = F.softmax(P,dim=1)
+        z = P
+        #z = F.softmax(P,dim=1)
         return z
 
 
