@@ -408,7 +408,7 @@ with torch.no_grad():
         plt.imshow(X=img, cmap='gray', vmin=0, vmax=255)
         "test4"
         #plt.show()
-        plt.savefig('%s/%d.png' % (odir, i))
+        plt.savefig('%s/test_%5d.png' % (odir, i))
         "test5"
         plt.close()
         figno+=1
