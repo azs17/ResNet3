@@ -438,6 +438,7 @@ with torch.no_grad():
     plt.title("ResNet3 Model")
     plt.xlabel("epoch")
     plt.ylabel("loss")
+    plt.axis(0,20,0.015,0.021)
     xx = yplot
     yy = loss_train_list
     yyy = loss_valid_list
@@ -448,7 +449,7 @@ with torch.no_grad():
     print(loss_test_list[0])
     plt.plot(xx,yy, color = "blue", label = "train")
     plt.plot(xx, yyy, color = "orange", label = "vaid")
-    plt.plot(xx, yyyy, color = "purple", label = "test")
+    #plt.plot(xx, yyyy, color = "purple", label = "test")
     #plt.plot(loss_valid_list, yplot, color ="blue")
     plt.axhline(y = loss_test_list[0], color = 'green')
     plt.savefig('%s/%s.png' % (odir, "loss"))
