@@ -444,16 +444,15 @@ with torch.no_grad():
     xx = yplot
     yy = loss_train_list
     yyy = loss_valid_list
-    yyyy = np.full(20, t_epoch_loss)
+    yyyy = np.full(20, loss_test_list[0])
     print(yy)
     print(yyy)
     print(yyyy)
-    print(loss_test_list[0])
     plt.plot(xx,yy, color = "blue", label = "train")
-    plt.plot(xx, yyy, color = "orange", label = "vaid")
-    #plt.plot(xx, yyyy, color = "purple", label = "test")
+    plt.plot(xx, yyy, color = "orange", label = "valid")
+    plt.plot(xx, yyyy, color = "purple", label = "test")
     #plt.plot(loss_valid_list, yplot, color ="blue")
-    plt.axhline(y = loss_test_list[0], color = 'green')
+    #plt.axhline(y = loss_test_list[0], color = 'green')
     plt.gca().legend()
     plt.savefig('%s/%s.png' % (odir, "loss"))
     
