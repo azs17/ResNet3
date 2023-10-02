@@ -421,7 +421,7 @@ with torch.no_grad():
     xx = yplot
     yy = loss_train_list
     xxx = loss_valid_list
-    xxxx = acc
+    xxxx = np.full(20, acc)
     plt.plot(xx,yy, color = "blue", label = "train")
     plt.plot(xxx, yy, color = "orange", label = "vaid")
     plt.plot(xxxx, yy, color = "purple", label = "test")
