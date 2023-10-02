@@ -425,6 +425,7 @@ with torch.no_grad():
     print(yy)
     print(yyy)
     print(yyyy)
+    print(loss_test_list[0])
     plt.plot(xx,yy, color = "blue", label = "train")
     plt.plot(xx, yyy, color = "orange", label = "vaid")
     plt.plot(xx, yyyy, color = "purple", label = "test")
