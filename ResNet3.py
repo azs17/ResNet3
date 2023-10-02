@@ -203,8 +203,8 @@ class ResNet(nn.Module):
         P = self.lin2(P)
        # print("P SHAPE", P.shape)
 
-        z = P
-        #z = F.softmax(P,dim=1)
+        
+        z = F.softmax(P,dim=1)
         return z
 
 
@@ -415,6 +415,26 @@ with torch.no_grad():
 
     yplot = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
     
+
+
+    plt.title("ResNet3 Model")
+    plt.xlabel("epoch")
+    plt.ylabel("accuracy")
+    xx = yplot
+    yy = acc_train_list
+    yyy = acc_valid_list
+    yyyy = np.full(20, acc)
+    plt.plot(xx,yy, color = "blue", label = "train")
+    plt.plot(xx, yyy, color = "orange", label = "vaid")
+    plt.plot(xx, yyyy, color = "purple", label = "test")
+    #plt.plot(loss_valid_list, yplot, color ="blue")
+    #plt.axhline(y = acc_test_list[0], color = 'green')
+    plt.savefig('%s/%s.png' % (odir, "loss"))
+
+
+    plt.close()
+
+
     plt.title("ResNet3 Model")
     plt.xlabel("epoch")
     plt.ylabel("loss")
@@ -432,6 +452,7 @@ with torch.no_grad():
     #plt.plot(loss_valid_list, yplot, color ="blue")
     plt.axhline(y = loss_test_list[0], color = 'green')
     plt.savefig('%s/%s.png' % (odir, "loss"))
+    
 
     #plt.show()
     #Validation
