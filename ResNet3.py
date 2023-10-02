@@ -371,7 +371,7 @@ with torch.no_grad():
         predicted_testlabel_list.append(predicted_val)
         correct += (predicted_val == Y).sum().item()
 
-    t_epoch_loss = t_epoch_loss / n_test
+  
     loss_test_list.append(t_epoch_loss)
     acc_test = (100* correct / n_test)
     acc_test_list.append(acc_test)
