@@ -422,7 +422,7 @@ with torch.no_grad():
     yy = loss_train_list
     yyy = loss_valid_list
     plt.plot(xx,yy)
-    plt.plot(loss_valid_list, yplot, color ="blue")
+    #plt.plot(loss_valid_list, yplot, color ="blue")
     plt.axhline(y = loss_test_list[0], color = 'green')
     plt.savefig('%s/%s.png' % (odir, "loss"))
 
