@@ -441,7 +441,7 @@ with torch.no_grad():
     xx = yplot
     yy = loss_train_list
     yyy = loss_valid_list
-    yyyy = np.full(20, acc)
+    yyyy = np.full(20, t_epoch_loss)
     print(yy)
     print(yyy)
     print(yyyy)
