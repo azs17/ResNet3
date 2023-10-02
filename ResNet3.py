@@ -427,6 +427,7 @@ with torch.no_grad():
     plt.plot(xx,yy, color = "blue", label = "train")
     plt.plot(xx, yyy, color = "orange", label = "vaid")
     plt.plot(xx, yyyy, color = "purple", label = "test")
+    plt.legend()
     #plt.plot(loss_valid_list, yplot, color ="blue")
     #plt.axhline(y = acc_test_list[0], color = 'green')
     plt.savefig('%s/%s.png' % (odir, "acc"))
@@ -452,21 +453,9 @@ with torch.no_grad():
     #plt.plot(xx, yyyy, color = "purple", label = "test")
     #plt.plot(loss_valid_list, yplot, color ="blue")
     plt.axhline(y = loss_test_list[0], color = 'green')
+    plt.legend()
     plt.savefig('%s/%s.png' % (odir, "loss"))
     
 
-    #plt.show()
-    #Validation
-    
-        # correct = 0
-        # total = 0
-        # for images, labels in val_ds, val_ds_labels:
-        #     images = images.to(my_device)
-        #     labels = labels.to(my_device)
-        #     outputs = model(images)
-        #     _, predicted = torch.max(outputs.data, 1)
-        #     total += labels.size(0)
-        #     correct += (predicted == labels).sum().item()
-        #     del images, labels, outputs
-    
+
 
