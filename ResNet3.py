@@ -292,6 +292,7 @@ for epoch in range(num_epochs):
 #VALID LOOP ------------------------------------------------------------
     with torch.no_grad():  
         correct = 0
+        v_epoch_loss = 0
         r = int(n_valid/batch_size)
         for batch in range(r):
             
@@ -337,6 +338,7 @@ for epoch in range(num_epochs):
 
 with torch.no_grad():  
     correct = 0
+    t_epoch_loss = 0
     print("#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#TESTING#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#")
     r = int(n_test/batch_size)
     for batch in range(r):
